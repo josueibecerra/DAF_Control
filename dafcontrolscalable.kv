@@ -1,0 +1,353 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+
+
+<WindowManager>:
+    canvas.before:
+        Color:
+            rgba: 0,0.415686275,0.321568627,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+<MainWindow>:
+    name: 'main'
+
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0,0.415686275,0.321568627,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            padding: (50,10)
+            cols:1
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'DAF Control'
+                    font_size: 42
+                    size_hint_y: .2
+                Image:
+                    source: 'buckmanlogo.png'
+                    size_hint_y: .5
+
+                Button:
+                    text: 'Continue'
+                    background_normal: ''
+                    background_color: (1,1,1,1)
+                    background_down: ''
+                    size_hint: 1,1
+                    color: (0,0.415686275,0.321568627,1)
+                    on_press:
+                        self.background_color = (0.5,0.5,0.5,1)
+                        self.color = (1,1,1,1)
+                    on_release:
+                        self.background_color = (1,1,1,1)
+                        self.color =  (0,0.415686275,0.321568627,1)
+                        app.root.current = 'second'
+                        root.manager.transition.direction = "left"
+                    size_hint_y: .08
+                Label:
+                    text: 'Powered by: Buckman Labratories'
+                    size_hint: 1, .1
+
+
+<SecondWindow>:
+    name: 'second'
+    canvas.before:
+        Color:
+            rgba: 0,0.415686275,0.321568627,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        size: self.size
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.1
+            Label:
+                text: '   DAF Control'
+                bold: True
+                font_size: 20
+                size_hint_x: .6
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            Button:
+                size_hint_x: .2
+                background_normal: ''
+                background_color: 0,0.415686275,0.321568627,1
+                on_release:
+                    app.root.current = 'main'
+                    root.manager.transition.direction = "right"
+                Image:
+                    source: 'home_icon&24.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+            Button:
+                size_hint_x: .2
+                background_normal: ''
+                background_color: 0,0.415686275,0.321568627,1
+                Image:
+                    source: 'refresh_icon&24.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.1
+            TextInput:
+                hint_text: 'Search items'
+                multiline: False
+                size_hint_x: 0.8
+            Button:
+                size_hint_x: 0.2
+                background_normal: ''
+                background_color: (0,0.415686275,0.321568627,1)
+                Image:
+                    source: 'zoom_icon&24.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+        BoxLayout:
+            orientation: 'vertical'
+            pos: self.pos
+            size: self.size
+            valign: 'top'
+            BoxLayout:
+                padding: 10
+                size_hint_y: 0.1
+                # canvas:
+                #     Color:
+                #         rgba: (.7,.7,.7,1)
+                #     Rectangle:
+                #         size: self.size
+                #         pos: self.pos
+                Label:
+                    text:'Pump 1'
+                    bold: True
+                    size_hint_x: .4
+                    font_size: 20
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: 'Sample'
+                    Label:
+                        text: 'Time Left: 5 Minutes'
+                Button:
+                    size_hint_x: .25
+                    background_normal: ''
+                    background_color: (0.7,0.7,0.7,1)
+                    on_release:
+                        app.root.current = 'third'
+                        root.manager.transition.direction = 'left'
+                    Image:
+                        source: 'arrow_right_icon&24.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+            BoxLayout:
+                pos: self.pos
+                size: self.size
+                valign: 'top'
+                padding: 10
+                size_hint_y: 0.1
+                # canvas:
+                #     Color:
+                #         rgba: (.7,.7,.7,1)
+                #     Rectangle:
+                #         size: self.size
+                #         pos: self.pos
+                Label:
+                    text:'Pump 2'
+                    bold: True
+                    size_hint_x: .4
+                    font_size: 20
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: 'Sample'
+                    Label:
+                        text: 'Time Left: 5 Minutes'
+                Button:
+                    size_hint_x: .25
+                    background_normal: ''
+                    background_color: (0.7,0.7,0.7,1)
+                    on_release:
+                        app.root.current = 'third'
+                        root.manager.transition.direction = 'left'
+                    Image:
+                        source: 'arrow_right_icon&24.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+            Button:
+                size_hint_y: 0.65
+                background_normal: ''
+                background_down: ''
+                background_color: (0,0.415686275,0.321568627,1)
+                on_release:
+                    app.root.current = 'third'
+                    root.manager.transition.direction = 'left'
+
+
+<ThirdWindow>:
+    name: 'third'
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            padding:10
+            size_hint_y: 0.7
+            Label:
+                text: 'Pump 1'
+                font_size: 35
+                text_size: self.size
+                halign: 'left'
+                bold: True
+            Button:
+                text: ''
+                bold: True
+                background_normal: ''
+                background_color: (0,0.415686275,0.321568627,1)
+                font_size: 35
+                text_size: self.size
+                valign: 'middle'
+                size_hint_x: .2
+                size_hint_y: 1.5
+                on_release:
+                    app.root.current = 'second'
+                    root.manager.transition.direction = 'right'
+                Image:
+                    source: 'arrow_left_icon&32.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    valign: 'middle'
+        Button:
+            text: ''
+            background_normal:''
+            background_down: ''
+            background_color: (1,1,1,1)
+            size_hint_y: 0.08
+        Label:
+            size_hint_y: 0.8
+            text: ' \nCurrent Schedule:'
+            font_size: 20
+            bold: True
+            text_size: self.size
+            halign: 'left'
+            padding: 10,10
+        GridLayout:
+            cols: 2
+            size_hint_y: 1.5
+            pos: self.pos
+            size: self.size
+            padding: 10
+            canvas.before:
+                Color:
+                    rgba: (0.7, 0.7, 0.7, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Position:'
+                color: (0,0.415686275,0.321568627,1)
+                text_size: self.size
+                halign: 'left'
+            Label:
+                text: 'Sample'
+            Label:
+                text: 'Max Turbidity:'
+                color: (0,0.415686275,0.321568627,1)
+                text_size: self.size
+                halign: 'left'
+            Label:
+                text: '20'
+            Label:
+                text: 'Flush Time:'
+                color: (0,0.415686275,0.321568627,1)
+                text_size: self.size
+                halign: 'left'
+            Label:
+                text: '100'
+            Label:
+                text: 'Sample Time:'
+                color: (0,0.415686275,0.321568627,1)
+                text_size: self.size
+                halign: 'left'
+            Label:
+                text: '6'
+            Label:
+                text: 'Time Left:'
+                color: (0,0.415686275,0.321568627,1)
+                text_size: self.size
+                halign: 'left'
+            Label:
+                text: '6'
+        Label:
+            text: 'Set Schedule:'
+            color: (1,1,1,1)
+            font_size: 20
+            bold: True
+            halign:'left'
+            text_size: self.size
+            padding_x: 10
+            size_hint_y: .5
+        GridLayout:
+            padding: 10
+            cols: 2
+            size_hint_y: 1.7
+            ToggleButton:
+                id: 'flush'
+                group: 'btnstate'
+                size_hint: (1,1)
+                # state:'down'
+                text:'Flush'
+                background_normal:''
+                background_down:''
+                background_color:(1,1,1,1) if self.state == 'down' else (0.211765, 0.686275, 0.321569, 1)
+                color: (0,0.415686275,0.321568627,1) if self.state == 'down' else (1,1,1,1)
+            ToggleButton:
+                id: 'sample'
+                group: 'btnstate'
+                size_hint: (1,1)
+                text: 'Sample'
+                background_normal:''
+                background_down:''
+                background_color:(1,1,1,1) if self.state == 'down' else (0.211765, 0.686275, 0.321569, 1)
+                color: (0,0.415686275,0.321568627,1) if self.state == 'down' else (1,1,1,1)
+            Label:
+                text: 'Max Turbidity (NTU):'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                hint_text: '20'
+                multiline: False
+                input_filter: 'float'
+            Label:
+                text: 'Flush Time (Min):'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                hint_text: '20'
+                multiline: False
+                input_filter: 'float'
+            Label:
+                text: 'Sample Time (Min):'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                hint_text: '20'
+                multiline: False
+                input_filter: 'float'
+        Button:
+            size_hint_y:.8
+            valign: 'bottom'
+            text: 'Confirm Schedule'
+            background_normal: ''
+            background_color: (0.211765, 0.686275, 0.321569, 1)
+            bold: True
